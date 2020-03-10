@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<h1 th:text="#{welcome.message}"></h1>
+<span th:text="#{language.change}"></span>:
+<select id="locales">
+  <option value="en" th:text="#{lang.en}"></option>
+  <option value="ua" th:text="#{lang.ua}"></option>
+</select>
+</body>
+</html>-->
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:type="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <title>Кнопка</title>
+  <style>
+    .btn {
+      display: inline-block; /* Строчно-блочный элемент */
+      background: #8C959D; /* Серый цвет фона */
+      color: #fff; /* Белый цвет текста */
+      padding: 1rem 1.5rem; /* Поля вокруг текста */
+      text-decoration: none; /* Убираем подчёркивание */
+      border-radius: 3px; /* Скругляем уголки */
+    }
+  </style>
+</head>
+<body>
+<a th:href="@{/resultEN}" class="btn">EN</a>
+<a th:href="@{/resultUA}" class="btn">UA</a>
+<h2> All Users(Ukrainian and American)</h2>
+
+<div th:switch="${users}">
+  <div th:case="*">
+    <table>
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>First name</th>
+        <th>Last name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each=" user: ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.firstName}"></td>
+        <td th:text="${user.lastName}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</body>
+
+</html>
